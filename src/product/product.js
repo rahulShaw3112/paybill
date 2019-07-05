@@ -16,7 +16,6 @@ class Product extends Component {
   render() {
     return (
       <div>
-        <Nav />
         <div className="container">
           <div className="row">
             <AddProduct refreshList={this.refreshList} />
