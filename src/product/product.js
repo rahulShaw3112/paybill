@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./product.css";
 import AddProduct from "../add-product/add-product";
 import ViewProduct from "../view-product/view-product";
+import Nav from '../navbar/nav'
 
 class Product extends Component {
   constructor(props) {
@@ -14,10 +15,13 @@ class Product extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <AddProduct refreshList={this.refreshList}/>
-          <ViewProduct ref={this.viewProduct} />
+      <div>
+        <Nav />
+        <div className="container">
+          <div className="row">
+            <AddProduct refreshList={this.refreshList} />
+            <ViewProduct ref={this.viewProduct} />
+          </div>
         </div>
       </div>
     );

@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import Nav from './navbar/nav'; // Import a component from another file
-import Product from './product/product';
+import Nav from './navbar/nav';
+import Bill from './bill/bill';
 
 function App() {
   return (
     <div>
        <Nav />
-       <Product />
+       <Bill />
     </div>
   );
 }
