@@ -22,7 +22,8 @@ class ViewProductFilter extends Component {
   }
 
   addToBill(product) {
-    console.log(product);
+    this.state.dataService.addProductBill(product);
+    this.props.refreshBill();
   }
 
   render() {

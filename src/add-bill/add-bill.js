@@ -7,9 +7,13 @@ class AddBill extends Component {
       super(props);
       this.viewProductFilter = React.createRef();
       this.handleChange = this.handleChange.bind(this);
+      this.refreshBill = this.refreshBill.bind(this);
   }
   handleChange(e) {
     this.viewProductFilter.current.changeFilterChar(e.target.value);
+  }
+  refreshBill() {
+      this.props.refreshList();
   }
   render() {
     return (
@@ -26,7 +30,7 @@ class AddBill extends Component {
             />
           </div>
         </form>
-        <ViewProductFilter ref={this.viewProductFilter} filterChar=""/>
+        <ViewProductFilter ref={this.viewProductFilter} filterChar="" refreshBill={this.refreshBill}/>
       </div>
     );
   }
