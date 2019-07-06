@@ -6,9 +6,9 @@ class Nav extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="#">
-          Billing App
-        </a>
+        <Link to="/bill">
+          <span className="navbar-brand">Billing App</span>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -26,10 +26,10 @@ class Nav extends Component {
         >
           <div className="navbar-nav">
             <Link to="/products">
-              <a className="nav-item nav-link">Add/View Products</a>
+              <span className="nav-item nav-link">Add/View Products</span>
             </Link>
             <Link to="/bill">
-              <a className="nav-item nav-link">Generate Bill</a>
+              <span className="nav-item nav-link">Generate Bill</span>
             </Link>
           </div>
         </div>

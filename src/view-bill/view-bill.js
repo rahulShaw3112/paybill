@@ -17,13 +17,22 @@ class ViewBill extends Component {
   render() {
     let id = 0;
     let products = [];
+    let totalTax = 0;
+    let totalBill = 0;
     if (this.state.dataService.getProductsBill()) {
       products = this.state.dataService.getProductsBill().map((d,i) => {
+        const tax = (d.price * d.quantity) * 0.05;
+        const total = (d.price * d.quantity) * 0.05 + (d.price * d.quantity);
+
+        totalTax += tax;
+        totalBill += total;
         return (
           <tr key={i}>
-            <th scope="row">{++id}</th>
             <td>{d.name}</td>
+            <td>{d.quantity}</td>
             <td>{d.price}</td>
+            <td>{tax}</td>
+            <td>{total}</td>
           </tr>
         );
       });
@@ -34,13 +43,19 @@ class ViewBill extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">id</th>
-              <th scope="col">Product Name</th>
-              <th scope="col">Price</th>
+              <th scope="col">Products</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Tax</th>
+              <th scope="col">Total</th>
             </tr>
           </thead>
           <tbody>{products}</tbody>
         </table>
+        <p>
+          <h5>Total Tax: {totalTax}</h5>
+          <h5>Total Bill: {totalBill}</h5>
+        </p>
       </div>
     );
   }

@@ -21,8 +21,10 @@ class ViewProductFilter extends Component {
     this.forceUpdate();
   }
 
-  addToBill(product) {
-    this.state.dataService.addProductBill(product);
+  addToBill(product, id) {
+    debugger;
+    const qty = document.querySelector(`#product${id} .quantity`).value
+    this.state.dataService.addProductBill(Object.assign(product, {quantity: qty}));
     this.props.refreshBill();
   }
 
@@ -36,15 +38,24 @@ class ViewProductFilter extends Component {
           .filter(d => d.name.includes(this.state.filterChar))
           .map((d, i) => {
             return (
-              <tr key={i}>
+              <tr key={i} id={'product' + i}>
                 <th scope="row">{++id}</th>
                 <td>{d.name}</td>
                 <td>{d.price}</td>
                 <td>
+                  <input
+                    type="text"
+                    className="form-control quantity"
+                    placeholder="Qty"
+                    name="quantity"
+                    defaultValue="1"
+                  />
+                </td>
+                <td>
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={this.addToBill.bind(this, d)}
+                    onClick={this.addToBill.bind(this, d, i)}
                   >
                     Add
                   </button>
@@ -55,15 +66,24 @@ class ViewProductFilter extends Component {
       } else {
         products = this.state.dataService.getProducts().map((d, i) => {
           return (
-            <tr key={i}>
+            <tr key={i} id={'product' + i}>
               <th scope="row">{++id}</th>
               <td>{d.name}</td>
               <td>{d.price}</td>
               <td>
+                <input
+                  type="text"
+                  className="form-control quantity"
+                  placeholder="Qty"
+                  name="quantity"
+                  defaultValue="1"
+                />
+              </td>
+              <td>
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={this.addToBill.bind(this, d)}
+                  onClick={this.addToBill.bind(this, d, i)}
                 >
                   Add
                 </button>
@@ -81,6 +101,7 @@ class ViewProductFilter extends Component {
               <th scope="col">id</th>
               <th scope="col">Product Name</th>
               <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
               <th scope="col">Add</th>
             </tr>
           </thead>

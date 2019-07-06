@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./product.css";
 import AddProduct from "../add-product/add-product";
 import ViewProduct from "../view-product/view-product";
-import Nav from '../navbar/nav'
 
 class Product extends Component {
   constructor(props) {
