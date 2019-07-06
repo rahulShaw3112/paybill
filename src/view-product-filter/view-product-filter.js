@@ -24,6 +24,7 @@ class ViewProductFilter extends Component {
   addToBill(product, id) {
     debugger;
     const qty = document.querySelector(`#product${id} .quantity`).value
+    document.querySelector(`#product${id} .quantity`).value = 1;
     this.state.dataService.addProductBill(Object.assign(product, {quantity: qty}));
     this.props.refreshBill();
   }
