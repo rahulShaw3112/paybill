@@ -15,7 +15,6 @@ class ViewBill extends Component {
   }
 
   render() {
-    let id = 0;
     let products = [];
     let totalTax = 0;
     let totalBill = 0;
@@ -30,34 +29,42 @@ class ViewBill extends Component {
           <tr key={i}>
             <td>{d.name}</td>
             <td>{d.quantity}</td>
-            <td>{d.price}</td>
-            <td>{tax}</td>
-            <td>{total}</td>
+            <td>Rs. {d.price}</td>
+            <td>Rs. {tax}</td>
+            <td>Rs. {total}</td>
           </tr>
         );
       });
     }
-    return (
-      <div className="col-md-6 col-xs-12 products">
-        <h3>Bill</h3>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Products</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Rate</th>
-              <th scope="col">Tax</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          <tbody>{products}</tbody>
-        </table>
-        <p>
-          <h5>Total Tax: {totalTax}</h5>
-          <h5>Total Bill: {totalBill}</h5>
-        </p>
-      </div>
-    );
+    if(products.length > 0) {
+      return (
+        <div className="col-md-6 col-xs-12 products">
+          <h3>Bill</h3>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Products</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Tax</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>{products}</tbody>
+          </table>
+          <div>
+            <h5>Total Tax: Rs. {totalTax}</h5>
+            <h5>Total Bill: Rs. {totalBill}</h5>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="col-md-6 col-xs-12 products">
+          <h3>Add Items to generate bill</h3>
+        </div>
+      );
+    }
   }
 }
 
